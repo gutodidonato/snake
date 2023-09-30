@@ -20,6 +20,11 @@ class Snake:
             segmento.goto(posicao)
             self.corpo.append(segmento)
             
+    def morder_corpo(self):
+        for parte in self.corpo[1:]:
+            if parte.xcor() == self.corpo[0].xcor() and parte.ycor() == self.corpo[0].ycor():
+                return "mordeu"
+            
     def move(self):
         for segmento in range(len(self.corpo) -1 ,0, -1):
             '''de trás para frente'''
