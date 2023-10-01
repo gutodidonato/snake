@@ -36,7 +36,12 @@ class Snake:
     libera a restrição de ter que loopar cada um de uma vez, pq considera a movimentação dos segmentos anteriores
     '''
     def esquerda(self):
-        self.corpo[0].left(90)
+        self.corpo[0].setheading(180)
     def direita(self):
-        self.corpo[0].right(90)
+        self.corpo[0].setheading(0)
+    def cima(self):
+        self.corpo[0].setheading(90)
+    def baixo(self):
+        self.corpo[0].setheading(270)
+        
         
