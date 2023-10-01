@@ -1,16 +1,18 @@
 from turtle import *
 MOVE_DISTANCE = 20
 POSICOES_INICIAIS = [(0, 0), (-20, 0), (-40, 0)]
+UP = 90
+DOWN = 270
+LEFT = 180
+RIGHT = 0
 
-
-
-class Snake:
-        
+class Snake:   
     
     def __init__(self):
         self.corpo =[]
-        self.corpo_inicial = [(0, 0), (-20, 0), (-40, 0)]
+        self.corpo_inicial = POSICOES_INICIAIS
         self.criar_cobra()
+        self.state = "right"
         
     def criar_cobra(self):
         for posicao in self.corpo_inicial:
@@ -36,12 +38,28 @@ class Snake:
     libera a restrição de ter que loopar cada um de uma vez, pq considera a movimentação dos segmentos anteriores
     '''
     def esquerda(self):
-        self.corpo[0].setheading(180)
+        if self.state == "right":
+            pass
+        else:
+            self.corpo[0].setheading(LEFT)
+            self.state = "left"
     def direita(self):
-        self.corpo[0].setheading(0)
+        if self.state == "left":
+            pass
+        else:
+            self.corpo[0].setheading(RIGHT)
+            self.state = "right"
     def cima(self):
-        self.corpo[0].setheading(90)
+        if self.state == "down":
+            pass
+        else:
+            self.corpo[0].setheading(UP)
+            self.state = "up"
     def baixo(self):
-        self.corpo[0].setheading(270)
+        if self.state == "up":
+            pass
+        else:
+            self.corpo[0].setheading(DOWN)
+            self.state = "down"
         
         
