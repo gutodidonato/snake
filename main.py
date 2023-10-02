@@ -26,12 +26,12 @@ screen.tracer(0)
 
 def colisao_comida():
     if snake.corpo[0].distance(food) < 15:
-        print("nom nom")
+        snake.crescer_alimentar()
         food.fui_comido()
         pontos.make_point()
 
 def game_lose():
-    if (snake.corpo[0].xcor() > 280) or (snake.corpo[0].xcor() < -280) or (snake.corpo[0].ycor() > 280) or (snake.corpo[0].ycor() < -280):
+    if (snake.corpo[0].xcor() > 290) or (snake.corpo[0].xcor() < -290) or (snake.corpo[0].ycor() > 290) or (snake.corpo[0].ycor() < -290):
         pontos.fim_de_jogo()
         return False
     elif snake.morder_corpo() == "mordeu":
@@ -44,7 +44,7 @@ def game_lose():
     
 while game_lose():
     screen.update()
-    time.sleep(0.1)
+    time.sleep(0.08)
     snake.move()
     colisao_comida()
     

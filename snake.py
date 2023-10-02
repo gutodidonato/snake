@@ -16,13 +16,21 @@ class Snake:
         
     def criar_cobra(self):
         for posicao in self.corpo_inicial:
-            segmento = Turtle("square")
-            segmento.color("white")
-            segmento.penup()
-            segmento.goto(posicao)
-            self.corpo.append(segmento)
+            self.crescer(posicao)
             
+            
+    def crescer(self, posicao):
+        segmento = Turtle("square")
+        segmento.color("white")
+        segmento.penup()
+        segmento.goto(posicao)
+        self.corpo.append(segmento)
+        
+    def crescer_alimentar(self):
+        self.crescer(self.corpo[-1].position())
+        
     def morder_corpo(self):
+        #utilizei o slice em python
         for parte in self.corpo[1:]:
             if parte.xcor() == self.corpo[0].xcor() and parte.ycor() == self.corpo[0].ycor():
                 return "mordeu"
@@ -34,6 +42,7 @@ class Snake:
             posicao_y_nova = self.corpo[segmento - 1].ycor()
             self.corpo[segmento].goto(posicao_x_nova, posicao_y_nova)
         self.corpo[0].forward(MOVE_DISTANCE)
+        
     '''
     libera a restrição de ter que loopar cada um de uma vez, pq considera a movimentação dos segmentos anteriores
     '''
